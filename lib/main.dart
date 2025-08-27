@@ -1,3 +1,5 @@
+import 'package:e_commerce_one/pages/account_page.dart';
+import 'package:e_commerce_one/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'pages/login_page.dart';
 
@@ -15,7 +17,8 @@ class MyApp extends StatelessWidget {
       initialRoute: 'LoginPage',
       routes: {
         'LoginPage': (context) => const LoginPage(),
-        'AccounPage': (context) => const LoginPage(),
+        'RegisterPage': (context) => const RegisterPage(),
+        'AccountPage': (context) => const AccountPage(),
       },
     );
   }

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _loginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _loginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _obscurePassword = true;
@@ -28,13 +29,15 @@ class _loginPageState extends State<LoginPage> {
                 const SizedBox(height: 40),
                 _buildHeader(),
                 const SizedBox(height: 40),
+                _buildUsernameField(),
+                const SizedBox(height: 20),
                 _buildEmailField(),
                 const SizedBox(height: 20),
                 _buildPasswordField(),
                 const SizedBox(height: 40),
                 _buildLoginButton(context),
                 const SizedBox(height: 20),
-                _buildSignupLink(context),
+                _buildLoginLink(context),
               ],
             ),
           ),
@@ -47,7 +50,7 @@ class _loginPageState extends State<LoginPage> {
     return const Column(
       children: [
         Text(
-          'Welcome Back!',
+          'Register',
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.bold,
@@ -56,10 +59,30 @@ class _loginPageState extends State<LoginPage> {
         ),
         SizedBox(height: 20),
         Text(
-          'login to continue',
+          'register to continue',
           style: TextStyle(fontSize: 18, color: Color(0xFF4C53A5)),
         ),
       ],
+    );
+  }
+
+  Widget _buildUsernameField() {
+    return TextFormField(
+      controller: _usernameController,
+      decoration: InputDecoration(
+        labelText: 'Username',
+        prefixIcon: const Icon(Icons.person, color: Color(0xFF4C53A5)),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Username tidak boleh kosong';
+        }
+        if (value.length < 3) {
+          return 'Username tidak valid';
+        }
+        return null;
+      },
     );
   }
 
@@ -128,19 +151,19 @@ class _loginPageState extends State<LoginPage> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),
       child: const Text(
-        'Login',
+        'Register',
         style: TextStyle(fontSize: 18, color: Colors.white),
       ),
     );
   }
 
-  Widget _buildSignupLink(BuildContext context) {
+  Widget _buildLoginLink(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.pushNamed(context, 'RegisterPage');
+        Navigator.pushNamed(context, 'LoginPage');
       },
       child: const Text(
-        'Don\'t have an account? Sign up',
+        'already have an account? Login',
         style: TextStyle(color: Color(0xFF4C53A5)),
       ),
     );
