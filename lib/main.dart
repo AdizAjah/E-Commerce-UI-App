@@ -1,6 +1,7 @@
-import 'package:e_commerce_one/pages/account_page.dart';
-import 'package:e_commerce_one/pages/register_page.dart';
+import 'package:e_commerce_one/pages/changePassword_page.dart';
 import 'package:flutter/material.dart';
+import 'pages/account_page.dart';
+import 'pages/register_page.dart';
 import 'pages/login_page.dart';
 
 void main() {
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         'LoginPage': (context) => const LoginPage(),
         'RegisterPage': (context) => const RegisterPage(),
         'AccountPage': (context) => const AccountPage(),
+        '/changePassword': (context) => const ChangepasswordPage(),
       },
     );
   }

@@ -15,6 +15,19 @@ class _loginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)?.settings.arguments;
+
+    if (args != null && args is String) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ScaffoldMessenger.of(context,).showSnackBar(
+          SnackBar(
+            content: Text(args),
+            backgroundColor: Color(0xFFF1BF42),
+            duration: const Duration(seconds: 1),  
+          )
+        );
+      });
+    }
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -51,13 +64,13 @@ class _loginPageState extends State<LoginPage> {
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF4C53A5),
+            color: Color(0xFFF1BF42),
           ),
         ),
         SizedBox(height: 20),
         Text(
           'login to continue',
-          style: TextStyle(fontSize: 18, color: Color(0xFF4C53A5)),
+          style: TextStyle(fontSize: 18, color: Color(0xFFF1BF42)),
         ),
       ],
     );
@@ -68,7 +81,7 @@ class _loginPageState extends State<LoginPage> {
       controller: _emailController,
       decoration: InputDecoration(
         labelText: 'Email',
-        prefixIcon: const Icon(Icons.email, color: Color(0xFF4C53A5)),
+        prefixIcon: const Icon(Icons.email, color: Color(0xFFF1BF42)),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
       ),
       validator: (value) {
@@ -88,12 +101,12 @@ class _loginPageState extends State<LoginPage> {
       controller: _passwordController,
       decoration: InputDecoration(
         labelText: 'Password',
-        prefixIcon: const Icon(Icons.lock, color: Color(0xFF4C53A5)),
+        prefixIcon: const Icon(Icons.lock, color: Color(0xFFF1BF42)),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         suffixIcon: IconButton(
           icon: Icon(
             _obscurePassword ? Icons.visibility_off : Icons.visibility,
-            color: Color(0xFF4C53A5),
+            color: Color(0xFFF1BF42),
           ),
           onPressed: () {
             setState(() {
@@ -123,7 +136,7 @@ class _loginPageState extends State<LoginPage> {
         }
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xFF4C53A5),
+        backgroundColor: Color(0xFFF1BF42),
         padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),
@@ -141,7 +154,7 @@ class _loginPageState extends State<LoginPage> {
       },
       child: const Text(
         'Don\'t have an account? Sign up',
-        style: TextStyle(color: Color(0xFF4C53A5)),
+        style: TextStyle(color: Color(0xFFF1BF42)),
       ),
     );
   }
