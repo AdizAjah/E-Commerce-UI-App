@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'pages/account_page.dart';
 import 'pages/register_page.dart';
 import 'pages/login_page.dart';
+import 'pages/cart_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         'RegisterPage': (context) => const RegisterPage(),
         'AccountPage': (context) => const AccountPage(),
         '/changePassword': (context) => const ChangepasswordPage(),
+        'CartPage': (context) => const CartPage(),
       },
     );
   }
