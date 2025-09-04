@@ -36,7 +36,7 @@ class CartAppBar extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.only(left: 20),
             child: Text(
-              '🛒 Cart',
+              'Cart',
               style: TextStyle(
                 fontSize: 23,
                 fontWeight: FontWeight.w900,

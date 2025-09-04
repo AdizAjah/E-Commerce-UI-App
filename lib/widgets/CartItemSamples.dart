@@ -48,7 +48,13 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                 height: 70,
                 width: 70,
                 margin: const EdgeInsets.only(right: 15),
-                child: Image.asset('images/carts/$i.png'),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12), // kasih radius kotak
+                  child: Image.asset(
+                    'images/carts/$i.jpg',
+                    fit: BoxFit.cover, // biar gambar nutupin kotak penuh
+                  ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),

@@ -33,10 +33,16 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         height: 70,
         color: const Color(0xFFF1BF42),
-        items: const [
-          Icon(Icons.home, size: 30, color: Colors.white),
-          Icon(Icons.shopping_cart, size: 30, color: Colors.white),
-          Icon(Icons.account_circle_sharp, size: 30, color: Colors.white),
+        items: [
+          Icon(Icons.home,
+              size: 30,
+              color: _currentIndex == 0 ? Colors.black : Colors.white),
+          Icon(Icons.shopping_cart,
+              size: 30,
+              color: _currentIndex == 1 ? Colors.black : Colors.white),
+          Icon(Icons.account_circle_sharp,
+              size: 30,
+              color: _currentIndex == 2 ? Colors.black : Colors.white),
         ],
         index: _currentIndex,
         onTap: (index) {
@@ -69,6 +75,7 @@ class HomePageContent extends StatelessWidget {
           ),
           child: Column(
             children: [
+              // ✅ 4.3.2 Search bar dengan ikon pencarian di kiri
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
                 padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -79,11 +86,12 @@ class HomePageContent extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
+                    const Icon(Icons.search, color: Color(0xFFF1BF42)),
+                    const SizedBox(width: 10),
                     Expanded(
                       child: TextFormField(
                         decoration: const InputDecoration(
                           border: InputBorder.none,
-                          icon: Icon(Icons.search, color: Color(0xFFF1BF42)),
                           hintText: 'Search here...',
                           hintStyle: TextStyle(
                             color: Color.fromARGB(255, 192, 192, 192),
@@ -101,7 +109,8 @@ class HomePageContent extends StatelessWidget {
               ),
               Container(
                 alignment: Alignment.centerLeft,
-                margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: const Text(
                   'Categories',
                   style: TextStyle(
@@ -114,11 +123,12 @@ class HomePageContent extends StatelessWidget {
               const CategoriesWidget(),
               Container(
                 alignment: Alignment.centerLeft,
-                margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
+                  children: const [
+                    Text(
                       'Best Selling',
                       style: TextStyle(
                         fontSize: 25,
@@ -126,6 +136,7 @@ class HomePageContent extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
+                    // ✅ 4.3.5 Tambah ikon filter visual
                     Icon(Icons.filter_list_rounded, color: Colors.white),
                   ],
                 ),

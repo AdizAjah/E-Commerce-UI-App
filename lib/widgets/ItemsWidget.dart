@@ -25,13 +25,15 @@ class ItemsWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
+              // ✅ 4.3.3 Shadow halus biar lebih hidup
               boxShadow: const [
                 BoxShadow(
-                  color: Color.fromARGB(255, 98, 98, 98),
-                  blurRadius: 5,
-                  offset: Offset(0, 2),
-                )
-              ]
+                  color: Colors.black26,
+                  blurRadius: 6,
+                  spreadRadius: 1,
+                  offset: Offset(0, 3),
+                ),
+              ],
             ),
             child: Column(
               children: [
@@ -62,10 +64,15 @@ class ItemsWidget extends StatelessWidget {
                   },
                   child: Container(
                     margin: const EdgeInsets.all(10),
-                    child: Image.asset(
-                      'images/items/${i + 1}.jpg',
-                      height: 100,
-                      width: 100,
+                    child: AspectRatio(
+                      aspectRatio: 1, // ✅ bikin kotak
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Image.asset(
+                          'images/items/${i + 1}.jpg',
+                          fit: BoxFit.cover, // biar ngepas penuh ke kotak
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -80,11 +87,16 @@ class ItemsWidget extends StatelessWidget {
                     ),
                   ),
                 ),
+                // ✅ 4.3.4 Ubah teks jadi italic + warna sekunder
                 Container(
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     'Write description Product',
-                    style: TextStyle(fontSize: 14, color: Color.fromARGB(255, 137, 137, 137), fontStyle: FontStyle.italic),
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Color(0xFF6C757D), // abu-abu sekunder
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
                 ),
                 const Padding(

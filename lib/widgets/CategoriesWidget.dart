@@ -27,10 +27,16 @@ class CategoriesWidget extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Image.asset(
-                    'images/categories/${i + 1}.jpg',
-                    width: 40,
-                    height: 40,
+                  // ✅ gambar dipaksa kotak 40x40
+                  SizedBox.square(
+                    dimension: 40,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.asset(
+                        'images/categories/${i + 1}.jpg',
+                        fit: BoxFit.cover, // isi penuh ke kotak
+                      ),
+                    ),
                   ),
                   const SizedBox(width: 10),
                   Text(
