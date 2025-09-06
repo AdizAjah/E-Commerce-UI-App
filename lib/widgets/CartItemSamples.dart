@@ -8,11 +8,10 @@ class CartItemSamples extends StatefulWidget {
 }
 
 class _CartItemSamplesState extends State<CartItemSamples> {
-  // contoh data dummy
   List<Map<String, dynamic>> items = List.generate(
     5,
     (i) => {
-      "title": "Product $i",
+      "title": "Product $i dengan nama yang agak panjang biar kelihatan wrap",
       "price": 55,
       "quantity": 1,
       "hidden": false,
@@ -26,11 +25,9 @@ class _CartItemSamplesState extends State<CartItemSamples> {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: items.length,
       itemBuilder: (context, i) {
-        // kalau item disembunyiin -> return SizedBox kosong
         if (items[i]["hidden"]) return const SizedBox.shrink();
 
         return Container(
-          height: 110,
           margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -47,48 +44,56 @@ class _CartItemSamplesState extends State<CartItemSamples> {
               Container(
                 height: 70,
                 width: 70,
-                margin: const EdgeInsets.only(right: 15),
+                margin: const EdgeInsets.only(right: 10),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12), // kasih radius kotak
+                  borderRadius: BorderRadius.circular(12),
                   child: Image.asset(
                     'images/carts/$i.jpg',
-                    fit: BoxFit.cover, // biar gambar nutupin kotak penuh
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      items[i]["title"],
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFFF1BF42),
+
+              // Expanded biar nggak overflow
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          items[i]["title"],
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFFF1BF42),
+                          ),
+                        ),
                       ),
-                    ),
-                    Text(
-                      "\$${items[i]["price"]}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFFF1BF42),
+                      Text(
+                        "\$${items[i]["price"]}",
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFFF1BF42),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-              const Spacer(),
+
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // tombol delete cuma sembunyiin item, gak hapus data
                     GestureDetector(
                       onTap: () {
                         setState(() {
@@ -99,7 +104,6 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                     ),
                     Row(
                       children: [
-                        // tombol +
                         GestureDetector(
                           onTap: () {
                             setState(() {
@@ -123,17 +127,16 @@ class _CartItemSamplesState extends State<CartItemSamples> {
                           ),
                         ),
                         Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
                           child: Text(
                             items[i]["quantity"].toString().padLeft(2, "0"),
                             style: const TextStyle(
-                              fontSize: 16,
+                              fontSize: 15,
                               fontWeight: FontWeight.bold,
                               color: Color(0xFFF1BF42),
                             ),
                           ),
                         ),
-                        // tombol –
                         GestureDetector(
                           onTap: () {
                             setState(() {

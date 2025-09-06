@@ -14,7 +14,7 @@ class CartPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          const CartAppBar(), // appbar custom
+          const CartAppBar(),
           Expanded(
             child: Container(
               padding: const EdgeInsets.only(top: 15),
@@ -37,7 +37,6 @@ class CartPage extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        // TextField buat input kupon
                         Expanded(
                           child: TextField(
                             controller: couponController,
@@ -49,8 +48,6 @@ class CartPage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 10),
-
-                        // Tombol Apply
                         ElevatedButton(
                           onPressed: () {
                             final code = couponController.text.trim();
@@ -90,7 +87,7 @@ class CartPage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: const CartBottomNavBar(), // Bottom NavBar khusus Cart
+      bottomNavigationBar: const CartBottomNavBar(),
     );
   }
 }

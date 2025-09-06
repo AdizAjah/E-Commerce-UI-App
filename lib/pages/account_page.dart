@@ -52,7 +52,7 @@ class AccountPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
-                'Yusuf Kroco',
+                'Mas Makmur',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class AccountPage extends StatelessWidget {
                 ),
               ),
               Text(
-                'yusufkroco@gmail.com',
+                'makmur@gmail.com',
                 style: TextStyle(color: Colors.white70),
               ),
             ],

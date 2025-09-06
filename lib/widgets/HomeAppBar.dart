@@ -56,7 +56,7 @@ class HomeAppBar extends StatelessWidget {
               animationDuration: Duration(milliseconds: 300),
             ),
             badgeStyle: const badges.BadgeStyle(
-              badgeColor: Colors.red,
+              badgeColor: Colors.blue,
               padding: EdgeInsets.all(6),
               borderRadius: BorderRadius.all(Radius.circular(8)),
               elevation: 0,

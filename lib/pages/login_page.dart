@@ -86,10 +86,10 @@ class _loginPageState extends State<LoginPage> {
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Email tidak boleh kosong';
+          return 'Email can\'t be empty';
         }
         if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-          return 'Email tidak valid';
+          return 'Email is not valid';
         }
         return null;
       },
@@ -118,10 +118,10 @@ class _loginPageState extends State<LoginPage> {
       obscureText: _obscurePassword,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Password tidak boleh kosong';
+          return 'Password can\'t be empty';
         }
         if (value.length < 6) {
-          return 'Password minimal 6 karakter';
+          return 'Password must be at least 6 characters';
         }
         return null;
       },

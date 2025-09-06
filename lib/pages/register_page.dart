@@ -50,17 +50,17 @@ class _RegisterPageState extends State<RegisterPage> {
     return const Column(
       children: [
         Text(
-          'Register',
+          'Hello, New User!',
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF4C53A5),
+            color: Color(0xFFF1BF42),
           ),
         ),
         SizedBox(height: 20),
         Text(
-          'register to continue',
-          style: TextStyle(fontSize: 18, color: Color(0xFF4C53A5)),
+          'Please register to continue',
+          style: TextStyle(fontSize: 18, color: Color(0xFFF1BF42)),
         ),
       ],
     );
@@ -71,15 +71,15 @@ class _RegisterPageState extends State<RegisterPage> {
       controller: _usernameController,
       decoration: InputDecoration(
         labelText: 'Username',
-        prefixIcon: const Icon(Icons.person, color: Color(0xFF4C53A5)),
+        prefixIcon: const Icon(Icons.person, color: Color(0xFFF1BF42)),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Username tidak boleh kosong';
+          return 'Username can\'t be empty';
         }
         if (value.length < 3) {
-          return 'Username tidak valid';
+          return 'Username must be at least 3 characters';
         }
         return null;
       },
@@ -91,15 +91,15 @@ class _RegisterPageState extends State<RegisterPage> {
       controller: _emailController,
       decoration: InputDecoration(
         labelText: 'Email',
-        prefixIcon: const Icon(Icons.email, color: Color(0xFF4C53A5)),
+        prefixIcon: const Icon(Icons.email, color: Color(0xFFF1BF42)),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Email tidak boleh kosong';
+          return 'Email can\'t be empty';
         }
         if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-          return 'Email tidak valid';
+          return 'Email is not valid';
         }
         return null;
       },
@@ -111,12 +111,12 @@ class _RegisterPageState extends State<RegisterPage> {
       controller: _passwordController,
       decoration: InputDecoration(
         labelText: 'Password',
-        prefixIcon: const Icon(Icons.lock, color: Color(0xFF4C53A5)),
+        prefixIcon: const Icon(Icons.lock, color: Color(0xFFF1BF42)),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         suffixIcon: IconButton(
           icon: Icon(
             _obscurePassword ? Icons.visibility_off : Icons.visibility,
-            color: Color(0xFF4C53A5),
+            color: Color(0xFFF1BF42),
           ),
           onPressed: () {
             setState(() {
@@ -128,10 +128,10 @@ class _RegisterPageState extends State<RegisterPage> {
       obscureText: _obscurePassword,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Password tidak boleh kosong';
+          return 'Password can\'t be empty';
         }
         if (value.length < 6) {
-          return 'Password minimal 6 karakter';
+          return 'Password must be at least 6 characters';
         }
         return null;
       },
@@ -146,7 +146,7 @@ class _RegisterPageState extends State<RegisterPage> {
         }
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xFF4C53A5),
+        backgroundColor: Color(0xFFF1BF42),
         padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),
@@ -164,7 +164,7 @@ class _RegisterPageState extends State<RegisterPage> {
       },
       child: const Text(
         'already have an account? Login',
-        style: TextStyle(color: Color(0xFF4C53A5)),
+        style: TextStyle(color: Color(0xFFF1BF42)),
       ),
     );
   }
